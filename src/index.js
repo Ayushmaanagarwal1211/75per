@@ -33,7 +33,6 @@ import {
 import "./index.css";
 import LoginSignup from './components/login/LoginSignup.jsx';
 import ReviewPage from './components/review/review.jsx';
-import { ThemeContext, ThemeProvider } from './Content/context.js';
 
 
 // const ThemeContext = createContext();
@@ -161,10 +160,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 
   <React.StrictMode>
-    <ThemeProvider>
-
     <RouterProvider router={router} />
-    </ThemeProvider>
 
     {/* <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
       {children}

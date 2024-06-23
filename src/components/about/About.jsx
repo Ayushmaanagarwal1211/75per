@@ -1,21 +1,16 @@
 // src/About.js
-import React, { useContext } from 'react';
+import React from 'react';
 import './about.css';
 import Header from '../../pages/header';
 import image from '../../assets/book.png'
 import resource from '../../assets/resource.png'
 import benefit from '../../assets/benefits.png'
 import { Link } from 'react-router-dom';
-import { ThemeContext } from '../../Content/context';
 
 // import sun from './images/sun.png'; // Example image import
 // import moon from './images/moon.png'; // Example image import
 
 const About = () => {
-  let {theme}=useContext(ThemeContext)
-  if(theme=='dark'){
-    document.getElementsByTagName('body')[0].classList.toggle('active')
-  }
     return (
      <>
      <Header />

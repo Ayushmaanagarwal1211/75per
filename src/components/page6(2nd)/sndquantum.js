@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import NoResultsFound from '../noResultsFound/index.js'
 import '../page6(2nd)/sndquantum.css';
 import Header from '../../pages/header.js';
 import Aquantum from '../../assets/5th.png';
@@ -15,7 +14,6 @@ import Imguhv from '../../assets/uhv.jpg';
 import Imgos from '../../assets/os.jpg';
 import Imgtafl from '../../assets/autometa.png';
 import {FaMagnifyingGlass } from 'react-icons/fa6'
-import { FilterBAndW } from '@mui/icons-material';
 
 const books = [
   { img: Imgmath4, title: "Engineering Math4", file: "Mathematics4" },
@@ -71,7 +69,7 @@ function SndQuantum() {
   onChange={(e) => setSearchQuery(e.target.value)}
 />
 </div>
-         {filteredBooks.length !== 0 ? <div className="content" style={{ height: "auto" }}>
+        <div className="content" style={{ height: "auto" }}>
           {filteredBooks.map(book => (
             <div className="book" key={book.title}>
               <img src={book.img} alt={book.title} />
@@ -81,7 +79,7 @@ function SndQuantum() {
               </div>
             </div>
           ))}
-        </div> : <NoResultsFound />}
+        </div>
       </div>
     </div>
   );
