@@ -1,27 +1,16 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import { Link } from "react-router-dom"; // Import Link
-import { FaStar } from "react-icons/fa";
 import 'react-toastify/dist/ReactToastify.css';
 import './review.css';
-import { ThemeContext } from "../../Content/context";
 
 const ReviewPage = () => {
-  const {theme}=useContext(ThemeContext)
-
-  const [rating, setRating] = useState(null);
-  const [hover, setHover] = useState(null);
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     rating: '',
     review: ''
   });
-
-  useEffect(() => {
-    setFormData({ ...formData, rating: rating });
-  }, [rating]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -59,11 +48,10 @@ const ReviewPage = () => {
       rating: '',
       review: ''
     });
-    setRating(null);
   };
 
   return (
-    <section className={`${theme=='dark'?"active":""} `}>
+    <section>
 
 <Link to="/" className="back-icon" style={{ position: 'absolute', top: '15px', left: '35px', fontSize: '42px' }}>
         <svg 
@@ -86,7 +74,7 @@ const ReviewPage = () => {
         </svg>
       </Link>
 
-      <div className={`${theme=='dark'?"active":""} review-container`}>
+      <div className="review-container">
         <div className="reviewInfo">
           <div>
             {/* Review info section */}
@@ -108,27 +96,9 @@ const ReviewPage = () => {
               <label>Email Address</label>
                 <input placeholder="manav@example.com" type="email" name="email" value={formData.email} onChange={handleChange} required />
               </div>
-              <label>Rate Us</label>
               <div className="inputBox w100">
-                {[...Array(5)].map((star, index) => {
-                  const currentRating = index + 1;
-                  return (
-                    <label key={index}>
-                      <input
-                        type="radio"
-                        name="rating"
-                        value={currentRating}
-                        onClick={() => setRating(currentRating)}
-                      />
-                      <FaStar
-                        size={20}
-                        color={currentRating <= (hover || rating) ? '#ffc107' : '#e4e5e9'}
-                        onMouseEnter={() => setHover(currentRating)}
-                        onMouseLeave={() => setHover(null)}
-                      />
-                    </label>
-                  );
-                })}
+                <input type="number" name="rating" value={formData.rating} onChange={handleChange} required />
+                <span>Rating (1-5)</span>
               </div>
               <div className="inputBox w100">
                 <label>Your Feedback</label>
